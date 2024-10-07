@@ -12,6 +12,7 @@ const App: React.FC = () => {
     author: undefined,
     repository: undefined,
   })
+
   const dataList = useListAllCommit(filterData)
 
   return (

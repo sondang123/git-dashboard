@@ -14,11 +14,11 @@ export const FilterChart: React.FC<FilterChartProps> = ({ onSubmit }) => {
   const listUsers = useListUser()
 
   const onFinish = (values: any) => {
-    const { dateRange, ...otherValues } = values
+    const { dateRange, ...other } = values
     const formattedValues = {
-      ...otherValues,
-      fromDate: dateRange?.[0]?.toISOString(),
-      toDate: dateRange?.[1]?.toISOString(),
+      ...other,
+      from_date: dateRange?.[0]?.toISOString(),
+      to_date: dateRange?.[1]?.toISOString(),
     }
     onSubmit(formattedValues)
   }
@@ -32,7 +32,7 @@ export const FilterChart: React.FC<FilterChartProps> = ({ onSubmit }) => {
           placeholder={'Chọn'}
         />
       </Form.Item>
-      <Form.Item name="project" label="Project">
+      <Form.Item name="repository" label="Repository">
         <Select
           options={listRepository?.data?.labelValueArray ?? []}
           style={{ width: 200 }}

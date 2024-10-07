@@ -88,21 +88,13 @@ export const useListAllCommit = ({
   repository,
 }: Partial<pramsRqListCommit> = {}) => {
   return useQuery({
-    queryKey: [
-      GET_ALL_COMMIT,
-      {
-        from_date,
-        to_date,
-        author,
-        repository,
-      },
-    ],
+    queryKey: [GET_ALL_COMMIT, from_date, to_date, author, repository],
     queryFn: async () => {
       const response: any = await getListAllCommit({
         from_date,
         to_date,
-        author,
-        repository,
+        author: author === '' ? undefined : author,
+        repository: repository === '' ? undefined : repository,
       })
 
       const dailyStats = getCommitStatsByDay(response ?? [])
